@@ -1,695 +1,679 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="揭秘体检谣言，守护父母健康 - 专业医学核实">
+    <title>【真相】体检真的危险吗？给爸妈的辟谣指南</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;500;700&display=swap');
+        
+        :root {
+            --text-base: 18px;
+            --text-lg: 20px;
+            --text-xl: 24px;
+            --text-2xl: 28px;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: var(--text-base);
+            line-height: 1.8;
+            background: #fafafa;
+            color: #333;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        
+        .serif { font-family: 'Noto Serif SC', serif; }
+        
+        /* 微信适配 */
+        .wx-share-img {
+            position: absolute;
+            left: -9999px;
+            width: 300px;
+            height: 300px;
+        }
+        
+        /* 大字体模式 */
+        body.large-text {
+            --text-base: 22px;
+            --text-lg: 26px;
+            --text-xl: 30px;
+            --text-2xl: 36px;
+        }
+        
+        /* 卡片样式 */
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            margin: 16px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        
+        .card:active {
+            transform: scale(0.98);
+        }
+        
+        /* 谣言标记 */
+        .rumor-tag {
+            background: #fff2f0;
+            color: #cf1322;
+            border: 1px solid #ffccc7;
+        }
+        
+        .truth-tag {
+            background: #f6ffed;
+            color: #389e0d;
+            border: 1px solid #b7eb8f;
+        }
+        
+        .warning-tag {
+            background: #fffbe6;
+            color: #d48806;
+            border: 1px solid #ffe58f;
+        }
+        
+        /* 语音播放动画 */
+        .speaking {
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        /* 朗读高亮 */
+        .highlight {
+            background: linear-gradient(120deg, #ffe58f 0%, #ffe58f 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 88%;
+            transition: background-size 0.3s;
+        }
+        
+        /* 底部固定按钮 */
+        .fixed-bottom {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #eee;
+            padding: 12px 16px;
+            padding-bottom: env(safe-area-inset-bottom);
+            z-index: 100;
+            display: flex;
+            gap: 12px;
+        }
+        
+        /* 步骤指示器 */
+        .step-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        /* 折叠面板 */
+        .collapse-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .collapse-content.open {
+            max-height: 2000px;
+        }
+        
+        /* 微信分享提示 */
+        .wx-tips {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 999;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 60px;
+            color: white;
+        }
+        
+        .wx-tips.show {
+            display: flex;
+        }
+        
+        .arrow-up {
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 30px solid white;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+    </style>
 </head>
-<body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="zh-CN"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="description" content="揭秘体检谣言，守护父母健康 - 专业医学核实"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;【真相】体检真的危险吗？给爸妈的辟谣指南&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&amp;family=Noto+Sans+SC:wght@400;500;700&amp;display=swap');</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>:root {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>--text-base: 18px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>--text-lg: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>--text-xl: 24px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>--text-2xl: 28px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: var(--text-base);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.8;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #fafafa;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #333;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>-webkit-font-smoothing: antialiased;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>overflow-x: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.serif { font-family: 'Noto Serif SC', serif; }</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* 微信适配 */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.wx-share-img {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>left: -9999px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 300px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 300px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* 大字体模式 */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>body.large-text {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>--text-base: 22px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>--text-lg: 26px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>--text-xl: 30px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>--text-2xl: 36px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* 卡片样式 */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.card {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 16px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 2px 12px rgba(0,0,0,0.08);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 16px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: transform 0.2s;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.card:active {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: scale(0.98);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* 谣言标记 */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.rumor-tag {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #fff2f0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #cf1322;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #ffccc7;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.truth-tag {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #f6ffed;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #389e0d;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #b7eb8f;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.warning-tag {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #fffbe6;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #d48806;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #ffe58f;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* 语音播放动画 */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.speaking {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>animation: pulse 1.5s infinite;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>@keyframes pulse {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>0%, 100% { opacity: 1; }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>50% { opacity: 0.6; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* 朗读高亮 */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.highlight {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(120deg, #ffe58f 0%, #ffe58f 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-repeat: no-repeat;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-size: 100% 40%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-position: 0 88%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: background-size 0.3s;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* 底部固定按钮 */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.fixed-bottom {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>bottom: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>left: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>right: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-top: 1px solid #eee;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px 16px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding-bottom: env(safe-area-inset-bottom);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>z-index: 100;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* 步骤指示器 */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.step-number {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 32px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 32px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>flex-shrink: 0;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* 折叠面板 */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.collapse-content {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-height: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: max-height 0.3s ease-out;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.collapse-content.open {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-height: 2000px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* 微信分享提示 */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.wx-tips {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>left: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>right: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>bottom: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(0,0,0,0.8);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>z-index: 999;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: flex-start;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding-top: 60px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.wx-tips.show {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.arrow-up {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-left: 20px solid transparent;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-right: 20px solid transparent;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 30px solid white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>animation: bounce 2s infinite;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>@keyframes bounce {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>0%, 20%, 50%, 80%, 100% {transform: translateY(0);}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>40% {transform: translateY(-20px);}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>60% {transform: translateY(-10px);}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body class="pb-24"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 微信分享图（隐藏） --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect fill='%23cf1322' width='300' height='300'/%3E%3Ctext x='50%25' y='45%25' font-family='sans-serif' font-size='40' fill='white' text-anchor='middle' font-weight='bold'%3E体检谣言%3C/text%3E%3Ctext x='50%25' y='65%25' font-family='sans-serif' font-size='24' fill='white' text-anchor='middle'%3E真相揭秘%3C/text%3E%3C/svg%3E" class="wx-share-img" alt="分享图"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 顶部导航 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 px-4 py-3 flex justify-between items-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="flex items-center gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="text-2xl"&gt;🛡️&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="font-bold text-lg"&gt;健康辟谣&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="flex gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;button onclick="toggleTextSize()" class="px-3 py-1.5 bg-gray-100 rounded-full text-sm font-medium active:bg-gray-200"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span id="size-icon"&gt;🔍&lt;/span&gt; &lt;span id="size-text"&gt;大字&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;button onclick="shareTips()" class="px-3 py-1.5 bg-green-500 text-white rounded-full text-sm font-medium active:bg-green-600"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>📤 转发</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 标题区 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="px-4 pt-6 pb-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="inline-block px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm font-bold mb-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>⚠️ 紧急辟谣</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1 class="serif text-2xl font-bold leading-tight mb-3 text-gray-900"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>体检真的危险吗？&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="text-red-600"&gt;揭秘那些吓唬老人的谣言&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="text-gray-500 text-base"&gt;阅读约需 3 分钟 • 建议朗读收听&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 语音控制条 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="mx-4 mb-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-4 border border-blue-100"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="flex items-center justify-between"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center gap-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button id="playBtn" onclick="toggleSpeech()" class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center text-xl shadow-lg active:scale-95 transition-transform"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>▶️</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="font-bold text-gray-800"&gt;听全文&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-sm text-gray-500"&gt;自动朗读，解放双眼&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="text-right"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="text-xs text-gray-400 mb-1"&gt;语速&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex gap-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button onclick="setRate(0.8)" class="px-2 py-1 bg-white rounded text-xs border border-gray-200"&gt;慢&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button onclick="setRate(1)" class="px-2 py-1 bg-blue-500 text-white rounded text-xs"&gt;中&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button onclick="setRate(1.2)" class="px-2 py-1 bg-white rounded text-xs border border-gray-200"&gt;快&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 核心警告 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card bg-red-50 border-red-100"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="p-5"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-start gap-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="text-3xl"&gt;🚨&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="font-bold text-red-700 text-lg mb-2"&gt;先看结论&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-red-800 leading-relaxed" data-speak&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>近期流传的"老年人体检危险"视频存在大量&lt;span class="font-bold"&gt;虚假数据&lt;/span&gt;和&lt;span class="font-bold"&gt;夸大说法&lt;/span&gt;，属于典型的"医疗恐吓营销"。可能导致真正需要检查的老年人延误诊断。</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 六大谣言揭秘 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="px-4 mt-6 mb-2 font-bold text-gray-700 flex items-center gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="w-1 h-6 bg-red-500 rounded-full"&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>六大谣言逐一粉碎</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 谣言1 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="p-5 border-b border-gray-100"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center justify-between mb-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="rumor-tag px-3 py-1 rounded-full text-sm font-bold"&gt;谣言 1&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button onclick="toggleCollapse(this)" class="text-gray-400"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/&gt;&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-gray-800 font-medium text-lg mb-2 line-through decoration-red-500 decoration-2" data-speak&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>"每年超过60万老人因体检出现严重并发症"</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="collapse-content open bg-green-50"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="p-5 border-t border-green-100"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex items-start gap-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-2xl"&gt;✅&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="truth-tag inline-block px-2 py-0.5 rounded text-sm font-bold mb-2"&gt;真相&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-gray-700 leading-relaxed" data-speak&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>这个数字&lt;span class="font-bold text-green-700"&gt;没有任何可查证的来源&lt;/span&gt;。中华医学会从未发布过此类统计，是典型的伪造权威数据手法。</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 谣言2 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="p-5 border-b border-gray-100"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center justify-between mb-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="rumor-tag px-3 py-1 rounded-full text-sm font-bold"&gt;谣言 2&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button onclick="toggleCollapse(this)" class="text-gray-400"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/&gt;&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-gray-800 font-medium text-lg mb-2 line-through decoration-red-500 decoration-2" data-speak&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>"75岁以上肠镜严重并发症达8.3%，穿孔风险高7倍"</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="collapse-content bg-green-50"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="p-5 border-t border-green-100"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex items-start gap-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-2xl"&gt;✅&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="truth-tag inline-block px-2 py-0.5 rounded text-sm font-bold mb-2"&gt;真相&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-gray-700 leading-relaxed mb-3" data-speak&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>实际穿孔发生率约为&lt;span class="font-bold text-green-700"&gt;0.1%~0.3%&lt;/span&gt;，远低于视频所说的8.3%。美国、中国临床指南均未建议75岁以上完全回避肠镜，而是建议个体化评估。</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-white rounded-lg p-3 text-sm text-gray-600 border border-green-200"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>💡 提示：肠镜是发现早期肠癌的金标准，不要因为谣言错过筛查时机。</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 谣言3 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="p-5 border-b border-gray-100"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center justify-between mb-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="rumor-tag px-3 py-1 rounded-full text-sm font-bold"&gt;谣言 3&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button onclick="toggleCollapse(this)" class="text-gray-400"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/&gt;&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-gray-800 font-medium text-lg mb-2 line-through decoration-red-500 decoration-2" data-speak&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>"运动平板试验严重心律失常是年轻人15倍"</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="collapse-content bg-green-50"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="p-5 border-t border-green-100"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex items-start gap-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-2xl"&gt;✅&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="truth-tag inline-block px-2 py-0.5 rounded text-sm font-bold mb-2"&gt;真相&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-gray-700 leading-relaxed" data-speak&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>此数据无法在美国心脏病学会文献中核实。运动负荷试验确实有严格适应症，但有实时监测，并非视频渲染的那样随意让老人"跑步机上猝死"。</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 谣言4 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="p-5 border-b border-gray-100"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center justify-between mb-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="rumor-tag px-3 py-1 rounded-full text-sm font-bold"&gt;谣言 4&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button onclick="toggleCollapse(this)" class="text-gray-400"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/&gt;&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-gray-800 font-medium text-lg mb-2 line-through decoration-red-500 decoration-2" data-speak&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>"PET-CT辐射相当于500张胸片"</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="collapse-content bg-green-50"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="p-5 border-t border-green-100"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex items-start gap-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-2xl"&gt;✅&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="truth-tag inline-block px-2 py-0.5 rounded text-sm font-bold mb-2"&gt;真相&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-gray-700 leading-relaxed" data-speak&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>一次PET-CT约25mSv，一张胸片约0.02mSv，实际相当于&lt;span class="font-bold text-green-700"&gt;1250张&lt;/span&gt;——视频连恐吓都算错了数！更重要的是，用辐射恐吓否定有明确临床价值的检查，逻辑本身是操控性的。</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 谣言5&amp;6 简化展示 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card bg-yellow-50 border-yellow-100"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="p-5"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center gap-2 mb-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="warning-tag px-3 py-1 rounded-full text-sm font-bold"&gt;谣言 5 &amp; 6&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="space-y-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex items-start gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-red-500 mt-1"&gt;•&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-gray-700 line-through decoration-red-400" data-speak&gt;伪造《柳叶刀》研究数据&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex items-start gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-red-500 mt-1"&gt;•&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-gray-700 line-through decoration-red-400" data-speak&gt;"无痛胃镜麻醉意外是年轻人8倍"&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mt-3 p-3 bg-white rounded-lg border border-yellow-200"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-sm text-gray-600" data-speak&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="font-bold text-yellow-700"&gt;核实结果：&lt;/span&gt;以上引用均无法在权威期刊或中华医学会文献中找到出处，属于捏造或严重断章取义。正规医院做无痛胃镜前有麻醉评估，并非草率进行。</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 套路揭秘 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="px-4 mt-8 mb-2 font-bold text-gray-700 flex items-center gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="w-1 h-6 bg-purple-500 rounded-full"&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>揭秘"医疗恐吓"四步套路</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card bg-purple-50"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="p-5 space-y-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex gap-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-number bg-red-500 text-white text-sm"&gt;1&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="font-bold text-gray-800"&gt;制造恐慌&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-gray-600 text-sm mt-1"&gt;用骇人故事和虚假数据吓唬老人&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex gap-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-number bg-orange-500 text-white text-sm"&gt;2&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="font-bold text-gray-800"&gt;伪造权威&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-gray-600 text-sm mt-1"&gt;捏造"哈佛研究""柳叶刀数据"&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex gap-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-number bg-yellow-500 text-white text-sm"&gt;3&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="font-bold text-gray-800"&gt;推向极端&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-gray-600 text-sm mt-1"&gt;将合理风险极端化，让人拒绝正规医疗&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex gap-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-number bg-green-500 text-white text-sm"&gt;4&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="font-bold text-gray-800"&gt;推销替代&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-gray-600 text-sm mt-1"&gt;给出"简单便宜的替代方案"&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="bg-red-100 p-4 border-t border-red-200"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-red-800 text-sm font-bold text-center" data-speak&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>⚠️ 危害：可能导致真正需要检查的老年人延误诊断，错过最佳治疗时机！</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 正确做法 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="px-4 mt-8 mb-2 font-bold text-gray-700 flex items-center gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="w-1 h-6 bg-green-500 rounded-full"&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>正确的体检建议</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card bg-green-50"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="p-5"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 class="font-bold text-green-800 mb-4 text-lg"&gt;✅ 六项基础检查（确实推荐）&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="grid grid-cols-2 gap-3 mb-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-white p-3 rounded-lg text-center border border-green-200"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-2xl mb-1"&gt;🩸&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-sm font-medium"&gt;血液检查&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-white p-3 rounded-lg text-center border border-green-200"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-2xl mb-1"&gt;🫀&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-sm font-medium"&gt;血压监测&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-white p-3 rounded-lg text-center border border-green-200"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-2xl mb-1"&gt;🦴&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-sm font-medium"&gt;骨密度&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-white p-3 rounded-lg text-center border border-green-200"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-2xl mb-1"&gt;👁️&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-sm font-medium"&gt;眼底检查&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-white p-3 rounded-lg text-center border border-green-200"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-2xl mb-1"&gt;📈&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-sm font-medium"&gt;心电图&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-white p-3 rounded-lg text-center border border-green-200"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-2xl mb-1"&gt;🔬&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-sm font-medium"&gt;大便隐血&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-blue-50 rounded-lg p-4 border border-blue-200"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h4 class="font-bold text-blue-800 mb-2"&gt;📋 重要提醒&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;ul class="space-y-2 text-sm text-blue-900"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li class="flex items-start gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span&gt;•&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span data-speak&gt;肠镜、胃镜、CT等检查并非"洪水猛兽"，有明确临床价值&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li class="flex items-start gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span&gt;•&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span data-speak&gt;是否做检查应咨询主诊医生，根据个体情况决定&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li class="flex items-start gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span&gt;•&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span data-speak&gt;可参考国家卫健委或中华医学会官方发布的老年人体检指南&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 底部信息 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="px-4 mt-8 mb-24 text-center text-gray-400 text-sm"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;本内容基于公开医学文献核实&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="mt-1"&gt;具体诊疗请遵医嘱&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 固定底部按钮 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="fixed-bottom"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;button onclick="toggleSpeech()" id="bottomPlayBtn" class="flex-1 bg-blue-500 text-white py-3 rounded-full font-bold text-lg shadow-lg active:scale-95 transition-transform flex items-center justify-center gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span id="btnIcon"&gt;▶️&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span id="btnText"&gt;听全文&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;button onclick="shareTips()" class="flex-1 bg-green-500 text-white py-3 rounded-full font-bold text-lg shadow-lg active:scale-95 transition-transform flex items-center justify-center gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span&gt;📤&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span&gt;转发给爸妈&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 微信分享提示 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="wxTips" class="wx-tips" onclick="this.classList.remove('show')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="arrow-up"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="text-center px-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-xl font-bold mb-4"&gt;点击右上角"..."&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-lg mb-2"&gt;转发给亲朋好友&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-sm opacity-80"&gt;或分享到朋友圈&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="mt-12 text-6xl"&gt;👆&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>// 语音合成</p>
-<p class="p1"><span class="Apple-converted-space">        </span>let synth = window.speechSynthesis;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>let utterance = null;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>let isPlaying = false;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>let currentIndex = 0;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>let speechRate = 1;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>let paragraphs = [];</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// 初始化</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.addEventListener('DOMContentLoaded', () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>paragraphs = Array.from(document.querySelectorAll('[data-speak]'));</p>
-<p class="p1"><span class="Apple-converted-space">            </span>// 默认展开前两个</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('.collapse-content').forEach((el, i) =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>if (i &lt; 2) el.classList.add('open');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>});</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// 切换字体大小</p>
-<p class="p1"><span class="Apple-converted-space">        </span>function toggleTextSize() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.body.classList.toggle('large-text');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const btn = document.getElementById('size-text');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>btn.textContent = document.body.classList.contains('large-text') ? '标准' : '大字';</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// 切换折叠</p>
-<p class="p1"><span class="Apple-converted-space">        </span>function toggleCollapse(btn) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const content = btn.closest('.card').querySelector('.collapse-content');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const arrow = btn.querySelector('svg');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>content.classList.toggle('open');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (content.classList.contains('open')) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>arrow.style.transform = 'rotate(180deg)';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>arrow.style.transform = 'rotate(0deg)';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// 设置语速</p>
-<p class="p1"><span class="Apple-converted-space">        </span>function setRate(rate) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>speechRate = rate;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>// 更新按钮样式</p>
-<p class="p1"><span class="Apple-converted-space">            </span>event.target.parentElement.querySelectorAll('button').forEach(btn =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>btn.className = 'px-2 py-1 bg-white rounded text-xs border border-gray-200';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>});</p>
-<p class="p1"><span class="Apple-converted-space">            </span>event.target.className = 'px-2 py-1 bg-blue-500 text-white rounded text-xs';</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (isPlaying) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>stopSpeech();</p>
-<p class="p1"><span class="Apple-converted-space">                </span>startSpeech();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// 播放控制</p>
-<p class="p1"><span class="Apple-converted-space">        </span>function toggleSpeech() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (isPlaying) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>stopSpeech();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>startSpeech();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function startSpeech() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (paragraphs.length === 0) return;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>isPlaying = true;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>updatePlayButton();</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// 展开所有折叠内容以便朗读</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('.collapse-content').forEach(el =&gt; el.classList.add('open'));</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>speakCurrent();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function speakCurrent() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (currentIndex &gt;= paragraphs.length) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>stopSpeech();</p>
-<p class="p1"><span class="Apple-converted-space">                </span>currentIndex = 0;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// 高亮当前段落</p>
-<p class="p1"><span class="Apple-converted-space">            </span>paragraphs.forEach((p, i) =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>if (i === currentIndex) {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>p.classList.add('highlight');</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>p.scrollIntoView({ behavior: 'smooth', block: 'center' });</p>
-<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>p.classList.remove('highlight');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>});</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>const text = paragraphs[currentIndex].innerText;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>utterance = new SpeechSynthesisUtterance(text);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>utterance.lang = 'zh-CN';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>utterance.rate = speechRate;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>utterance.pitch = 1;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>utterance.onend = () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>currentIndex++;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>speakCurrent();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>};</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>utterance.onerror = () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>stopSpeech();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>};</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>synth.speak(utterance);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function stopSpeech() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>isPlaying = false;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>synth.cancel();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>updatePlayButton();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>paragraphs.forEach(p =&gt; p.classList.remove('highlight'));</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function updatePlayButton() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const icon = document.getElementById('btnIcon');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const text = document.getElementById('btnText');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const playBtn = document.getElementById('playBtn');</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (isPlaying) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>icon.textContent = '⏸️';</p>
-<p class="p1"><span class="Apple-converted-space">                </span>text.textContent = '暂停';</p>
-<p class="p1"><span class="Apple-converted-space">                </span>playBtn.innerHTML = '⏸️';</p>
-<p class="p1"><span class="Apple-converted-space">                </span>playBtn.classList.add('speaking');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>icon.textContent = '▶️';</p>
-<p class="p1"><span class="Apple-converted-space">                </span>text.textContent = '听全文';</p>
-<p class="p1"><span class="Apple-converted-space">                </span>playBtn.innerHTML = '▶️';</p>
-<p class="p1"><span class="Apple-converted-space">                </span>playBtn.classList.remove('speaking');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// 分享提示</p>
-<p class="p1"><span class="Apple-converted-space">        </span>function shareTips() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const ua = navigator.userAgent.toLowerCase();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (ua.match(/MicroMessenger/i) == "micromessenger") {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('wxTips').classList.add('show');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>// 非微信环境提示复制链接</p>
-<p class="p1"><span class="Apple-converted-space">                </span>if (navigator.share) {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>navigator.share({</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>title: '体检真的危险吗？给爸妈的辟谣指南',</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>text: '揭秘那些吓唬老人的健康谣言',</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>url: window.location.href</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>});</p>
-<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>alert('请复制链接发送给亲友，或在微信中打开后转发');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// 页面可见性变化时暂停</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.addEventListener('visibilitychange', () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (document.hidden &amp;&amp; isPlaying) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>stopSpeech();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+<body class="pb-24">
+    <!-- 微信分享图（隐藏） -->
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect fill='%23cf1322' width='300' height='300'/%3E%3Ctext x='50%25' y='45%25' font-family='sans-serif' font-size='40' fill='white' text-anchor='middle' font-weight='bold'%3E体检谣言%3C/text%3E%3Ctext x='50%25' y='65%25' font-family='sans-serif' font-size='24' fill='white' text-anchor='middle'%3E真相揭秘%3C/text%3E%3C/svg%3E" class="wx-share-img" alt="分享图">
+
+    <!-- 顶部导航 -->
+    <div class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <span class="text-2xl">🛡️</span>
+            <span class="font-bold text-lg">健康辟谣</span>
+        </div>
+        <div class="flex gap-2">
+            <button onclick="toggleTextSize()" class="px-3 py-1.5 bg-gray-100 rounded-full text-sm font-medium active:bg-gray-200">
+                <span id="size-icon">🔍</span> <span id="size-text">大字</span>
+            </button>
+            <button onclick="shareTips()" class="px-3 py-1.5 bg-green-500 text-white rounded-full text-sm font-medium active:bg-green-600">
+                📤 转发
+            </button>
+        </div>
+    </div>
+
+    <!-- 标题区 -->
+    <div class="px-4 pt-6 pb-4">
+        <div class="inline-block px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm font-bold mb-3">
+            ⚠️ 紧急辟谣
+        </div>
+        <h1 class="serif text-2xl font-bold leading-tight mb-3 text-gray-900">
+            体检真的危险吗？<br>
+            <span class="text-red-600">揭秘那些吓唬老人的谣言</span>
+        </h1>
+        <p class="text-gray-500 text-base">阅读约需 3 分钟 • 建议朗读收听</p>
+    </div>
+
+    <!-- 语音控制条 -->
+    <div class="mx-4 mb-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-4 border border-blue-100">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <button id="playBtn" onclick="toggleSpeech()" class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center text-xl shadow-lg active:scale-95 transition-transform">
+                    ▶️
+                </button>
+                <div>
+                    <div class="font-bold text-gray-800">听全文</div>
+                    <div class="text-sm text-gray-500">自动朗读，解放双眼</div>
+                </div>
+            </div>
+            <div class="text-right">
+                <div class="text-xs text-gray-400 mb-1">语速</div>
+                <div class="flex gap-1">
+                    <button onclick="setRate(0.8)" class="px-2 py-1 bg-white rounded text-xs border border-gray-200">慢</button>
+                    <button onclick="setRate(1)" class="px-2 py-1 bg-blue-500 text-white rounded text-xs">中</button>
+                    <button onclick="setRate(1.2)" class="px-2 py-1 bg-white rounded text-xs border border-gray-200">快</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 核心警告 -->
+    <div class="card bg-red-50 border-red-100">
+        <div class="p-5">
+            <div class="flex items-start gap-3">
+                <span class="text-3xl">🚨</span>
+                <div>
+                    <h3 class="font-bold text-red-700 text-lg mb-2">先看结论</h3>
+                    <p class="text-red-800 leading-relaxed" data-speak>
+                        近期流传的"老年人体检危险"视频存在大量<span class="font-bold">虚假数据</span>和<span class="font-bold">夸大说法</span>，属于典型的"医疗恐吓营销"。可能导致真正需要检查的老年人延误诊断。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 六大谣言揭秘 -->
+    <div class="px-4 mt-6 mb-2 font-bold text-gray-700 flex items-center gap-2">
+        <span class="w-1 h-6 bg-red-500 rounded-full"></span>
+        六大谣言逐一粉碎
+    </div>
+
+    <!-- 谣言1 -->
+    <div class="card">
+        <div class="p-5 border-b border-gray-100">
+            <div class="flex items-center justify-between mb-3">
+                <span class="rumor-tag px-3 py-1 rounded-full text-sm font-bold">谣言 1</span>
+                <button onclick="toggleCollapse(this)" class="text-gray-400">
+                    <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+            </div>
+            <p class="text-gray-800 font-medium text-lg mb-2 line-through decoration-red-500 decoration-2" data-speak>
+                "每年超过60万老人因体检出现严重并发症"
+            </p>
+        </div>
+        <div class="collapse-content open bg-green-50">
+            <div class="p-5 border-t border-green-100">
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">✅</span>
+                    <div>
+                        <div class="truth-tag inline-block px-2 py-0.5 rounded text-sm font-bold mb-2">真相</div>
+                        <p class="text-gray-700 leading-relaxed" data-speak>
+                            这个数字<span class="font-bold text-green-700">没有任何可查证的来源</span>。中华医学会从未发布过此类统计，是典型的伪造权威数据手法。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 谣言2 -->
+    <div class="card">
+        <div class="p-5 border-b border-gray-100">
+            <div class="flex items-center justify-between mb-3">
+                <span class="rumor-tag px-3 py-1 rounded-full text-sm font-bold">谣言 2</span>
+                <button onclick="toggleCollapse(this)" class="text-gray-400">
+                    <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+            </div>
+            <p class="text-gray-800 font-medium text-lg mb-2 line-through decoration-red-500 decoration-2" data-speak>
+                "75岁以上肠镜严重并发症达8.3%，穿孔风险高7倍"
+            </p>
+        </div>
+        <div class="collapse-content bg-green-50">
+            <div class="p-5 border-t border-green-100">
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">✅</span>
+                    <div>
+                        <div class="truth-tag inline-block px-2 py-0.5 rounded text-sm font-bold mb-2">真相</div>
+                        <p class="text-gray-700 leading-relaxed mb-3" data-speak>
+                            实际穿孔发生率约为<span class="font-bold text-green-700">0.1%~0.3%</span>，远低于视频所说的8.3%。美国、中国临床指南均未建议75岁以上完全回避肠镜，而是建议个体化评估。
+                        </p>
+                        <div class="bg-white rounded-lg p-3 text-sm text-gray-600 border border-green-200">
+                            💡 提示：肠镜是发现早期肠癌的金标准，不要因为谣言错过筛查时机。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 谣言3 -->
+    <div class="card">
+        <div class="p-5 border-b border-gray-100">
+            <div class="flex items-center justify-between mb-3">
+                <span class="rumor-tag px-3 py-1 rounded-full text-sm font-bold">谣言 3</span>
+                <button onclick="toggleCollapse(this)" class="text-gray-400">
+                    <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+            </div>
+            <p class="text-gray-800 font-medium text-lg mb-2 line-through decoration-red-500 decoration-2" data-speak>
+                "运动平板试验严重心律失常是年轻人15倍"
+            </p>
+        </div>
+        <div class="collapse-content bg-green-50">
+            <div class="p-5 border-t border-green-100">
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">✅</span>
+                    <div>
+                        <div class="truth-tag inline-block px-2 py-0.5 rounded text-sm font-bold mb-2">真相</div>
+                        <p class="text-gray-700 leading-relaxed" data-speak>
+                            此数据无法在美国心脏病学会文献中核实。运动负荷试验确实有严格适应症，但有实时监测，并非视频渲染的那样随意让老人"跑步机上猝死"。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 谣言4 -->
+    <div class="card">
+        <div class="p-5 border-b border-gray-100">
+            <div class="flex items-center justify-between mb-3">
+                <span class="rumor-tag px-3 py-1 rounded-full text-sm font-bold">谣言 4</span>
+                <button onclick="toggleCollapse(this)" class="text-gray-400">
+                    <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+            </div>
+            <p class="text-gray-800 font-medium text-lg mb-2 line-through decoration-red-500 decoration-2" data-speak>
+                "PET-CT辐射相当于500张胸片"
+            </p>
+        </div>
+        <div class="collapse-content bg-green-50">
+            <div class="p-5 border-t border-green-100">
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">✅</span>
+                    <div>
+                        <div class="truth-tag inline-block px-2 py-0.5 rounded text-sm font-bold mb-2">真相</div>
+                        <p class="text-gray-700 leading-relaxed" data-speak>
+                            一次PET-CT约25mSv，一张胸片约0.02mSv，实际相当于<span class="font-bold text-green-700">1250张</span>——视频连恐吓都算错了数！更重要的是，用辐射恐吓否定有明确临床价值的检查，逻辑本身是操控性的。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 谣言5&6 简化展示 -->
+    <div class="card bg-yellow-50 border-yellow-100">
+        <div class="p-5">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="warning-tag px-3 py-1 rounded-full text-sm font-bold">谣言 5 & 6</span>
+            </div>
+            <div class="space-y-3">
+                <div class="flex items-start gap-2">
+                    <span class="text-red-500 mt-1">•</span>
+                    <p class="text-gray-700 line-through decoration-red-400" data-speak>伪造《柳叶刀》研究数据</p>
+                </div>
+                <div class="flex items-start gap-2">
+                    <span class="text-red-500 mt-1">•</span>
+                    <p class="text-gray-700 line-through decoration-red-400" data-speak>"无痛胃镜麻醉意外是年轻人8倍"</p>
+                </div>
+                <div class="mt-3 p-3 bg-white rounded-lg border border-yellow-200">
+                    <p class="text-sm text-gray-600" data-speak>
+                        <span class="font-bold text-yellow-700">核实结果：</span>以上引用均无法在权威期刊或中华医学会文献中找到出处，属于捏造或严重断章取义。正规医院做无痛胃镜前有麻醉评估，并非草率进行。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 套路揭秘 -->
+    <div class="px-4 mt-8 mb-2 font-bold text-gray-700 flex items-center gap-2">
+        <span class="w-1 h-6 bg-purple-500 rounded-full"></span>
+        揭秘"医疗恐吓"四步套路
+    </div>
+
+    <div class="card bg-purple-50">
+        <div class="p-5 space-y-4">
+            <div class="flex gap-3">
+                <div class="step-number bg-red-500 text-white text-sm">1</div>
+                <div>
+                    <h4 class="font-bold text-gray-800">制造恐慌</h4>
+                    <p class="text-gray-600 text-sm mt-1">用骇人故事和虚假数据吓唬老人</p>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <div class="step-number bg-orange-500 text-white text-sm">2</div>
+                <div>
+                    <h4 class="font-bold text-gray-800">伪造权威</h4>
+                    <p class="text-gray-600 text-sm mt-1">捏造"哈佛研究""柳叶刀数据"</p>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <div class="step-number bg-yellow-500 text-white text-sm">3</div>
+                <div>
+                    <h4 class="font-bold text-gray-800">推向极端</h4>
+                    <p class="text-gray-600 text-sm mt-1">将合理风险极端化，让人拒绝正规医疗</p>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <div class="step-number bg-green-500 text-white text-sm">4</div>
+                <div>
+                    <h4 class="font-bold text-gray-800">推销替代</h4>
+                    <p class="text-gray-600 text-sm mt-1">给出"简单便宜的替代方案"</p>
+                </div>
+            </div>
+        </div>
+        <div class="bg-red-100 p-4 border-t border-red-200">
+            <p class="text-red-800 text-sm font-bold text-center" data-speak>
+                ⚠️ 危害：可能导致真正需要检查的老年人延误诊断，错过最佳治疗时机！
+            </p>
+        </div>
+    </div>
+
+    <!-- 正确做法 -->
+    <div class="px-4 mt-8 mb-2 font-bold text-gray-700 flex items-center gap-2">
+        <span class="w-1 h-6 bg-green-500 rounded-full"></span>
+        正确的体检建议
+    </div>
+
+    <div class="card bg-green-50">
+        <div class="p-5">
+            <h3 class="font-bold text-green-800 mb-4 text-lg">✅ 六项基础检查（确实推荐）</h3>
+            <div class="grid grid-cols-2 gap-3 mb-4">
+                <div class="bg-white p-3 rounded-lg text-center border border-green-200">
+                    <div class="text-2xl mb-1">🩸</div>
+                    <div class="text-sm font-medium">血液检查</div>
+                </div>
+                <div class="bg-white p-3 rounded-lg text-center border border-green-200">
+                    <div class="text-2xl mb-1">🫀</div>
+                    <div class="text-sm font-medium">血压监测</div>
+                </div>
+                <div class="bg-white p-3 rounded-lg text-center border border-green-200">
+                    <div class="text-2xl mb-1">🦴</div>
+                    <div class="text-sm font-medium">骨密度</div>
+                </div>
+                <div class="bg-white p-3 rounded-lg text-center border border-green-200">
+                    <div class="text-2xl mb-1">👁️</div>
+                    <div class="text-sm font-medium">眼底检查</div>
+                </div>
+                <div class="bg-white p-3 rounded-lg text-center border border-green-200">
+                    <div class="text-2xl mb-1">📈</div>
+                    <div class="text-sm font-medium">心电图</div>
+                </div>
+                <div class="bg-white p-3 rounded-lg text-center border border-green-200">
+                    <div class="text-2xl mb-1">🔬</div>
+                    <div class="text-sm font-medium">大便隐血</div>
+                </div>
+            </div>
+            
+            <div class="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                <h4 class="font-bold text-blue-800 mb-2">📋 重要提醒</h4>
+                <ul class="space-y-2 text-sm text-blue-900">
+                    <li class="flex items-start gap-2">
+                        <span>•</span>
+                        <span data-speak>肠镜、胃镜、CT等检查并非"洪水猛兽"，有明确临床价值</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span>•</span>
+                        <span data-speak>是否做检查应咨询主诊医生，根据个体情况决定</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span>•</span>
+                        <span data-speak>可参考国家卫健委或中华医学会官方发布的老年人体检指南</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部信息 -->
+    <div class="px-4 mt-8 mb-24 text-center text-gray-400 text-sm">
+        <p>本内容基于公开医学文献核实</p>
+        <p class="mt-1">具体诊疗请遵医嘱</p>
+    </div>
+
+    <!-- 固定底部按钮 -->
+    <div class="fixed-bottom">
+        <button onclick="toggleSpeech()" id="bottomPlayBtn" class="flex-1 bg-blue-500 text-white py-3 rounded-full font-bold text-lg shadow-lg active:scale-95 transition-transform flex items-center justify-center gap-2">
+            <span id="btnIcon">▶️</span>
+            <span id="btnText">听全文</span>
+        </button>
+        <button onclick="shareTips()" class="flex-1 bg-green-500 text-white py-3 rounded-full font-bold text-lg shadow-lg active:scale-95 transition-transform flex items-center justify-center gap-2">
+            <span>📤</span>
+            <span>转发给爸妈</span>
+        </button>
+    </div>
+
+    <!-- 微信分享提示 -->
+    <div id="wxTips" class="wx-tips" onclick="this.classList.remove('show')">
+        <div class="arrow-up"></div>
+        <div class="text-center px-8">
+            <p class="text-xl font-bold mb-4">点击右上角"..."</p>
+            <p class="text-lg mb-2">转发给亲朋好友</p>
+            <p class="text-sm opacity-80">或分享到朋友圈</p>
+        </div>
+        <div class="mt-12 text-6xl">👆</div>
+    </div>
+
+    <script>
+        // 语音合成
+        let synth = window.speechSynthesis;
+        let utterance = null;
+        let isPlaying = false;
+        let currentIndex = 0;
+        let speechRate = 1;
+        let paragraphs = [];
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            paragraphs = Array.from(document.querySelectorAll('[data-speak]'));
+            // 默认展开前两个
+            document.querySelectorAll('.collapse-content').forEach((el, i) => {
+                if (i < 2) el.classList.add('open');
+            });
+        });
+        
+        // 切换字体大小
+        function toggleTextSize() {
+            document.body.classList.toggle('large-text');
+            const btn = document.getElementById('size-text');
+            btn.textContent = document.body.classList.contains('large-text') ? '标准' : '大字';
+        }
+        
+        // 切换折叠
+        function toggleCollapse(btn) {
+            const content = btn.closest('.card').querySelector('.collapse-content');
+            const arrow = btn.querySelector('svg');
+            content.classList.toggle('open');
+            if (content.classList.contains('open')) {
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+        
+        // 设置语速
+        function setRate(rate) {
+            speechRate = rate;
+            // 更新按钮样式
+            event.target.parentElement.querySelectorAll('button').forEach(btn => {
+                btn.className = 'px-2 py-1 bg-white rounded text-xs border border-gray-200';
+            });
+            event.target.className = 'px-2 py-1 bg-blue-500 text-white rounded text-xs';
+            
+            if (isPlaying) {
+                stopSpeech();
+                startSpeech();
+            }
+        }
+        
+        // 播放控制
+        function toggleSpeech() {
+            if (isPlaying) {
+                stopSpeech();
+            } else {
+                startSpeech();
+            }
+        }
+        
+        function startSpeech() {
+            if (paragraphs.length === 0) return;
+            
+            isPlaying = true;
+            updatePlayButton();
+            
+            // 展开所有折叠内容以便朗读
+            document.querySelectorAll('.collapse-content').forEach(el => el.classList.add('open'));
+            
+            speakCurrent();
+        }
+        
+        function speakCurrent() {
+            if (currentIndex >= paragraphs.length) {
+                stopSpeech();
+                currentIndex = 0;
+                return;
+            }
+            
+            // 高亮当前段落
+            paragraphs.forEach((p, i) => {
+                if (i === currentIndex) {
+                    p.classList.add('highlight');
+                    p.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    p.classList.remove('highlight');
+                }
+            });
+            
+            const text = paragraphs[currentIndex].innerText;
+            utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-CN';
+            utterance.rate = speechRate;
+            utterance.pitch = 1;
+            
+            utterance.onend = () => {
+                currentIndex++;
+                speakCurrent();
+            };
+            
+            utterance.onerror = () => {
+                stopSpeech();
+            };
+            
+            synth.speak(utterance);
+        }
+        
+        function stopSpeech() {
+            isPlaying = false;
+            synth.cancel();
+            updatePlayButton();
+            paragraphs.forEach(p => p.classList.remove('highlight'));
+        }
+        
+        function updatePlayButton() {
+            const icon = document.getElementById('btnIcon');
+            const text = document.getElementById('btnText');
+            const playBtn = document.getElementById('playBtn');
+            
+            if (isPlaying) {
+                icon.textContent = '⏸️';
+                text.textContent = '暂停';
+                playBtn.innerHTML = '⏸️';
+                playBtn.classList.add('speaking');
+            } else {
+                icon.textContent = '▶️';
+                text.textContent = '听全文';
+                playBtn.innerHTML = '▶️';
+                playBtn.classList.remove('speaking');
+            }
+        }
+        
+        // 分享提示
+        function shareTips() {
+            const ua = navigator.userAgent.toLowerCase();
+            if (ua.match(/MicroMessenger/i) == "micromessenger") {
+                document.getElementById('wxTips').classList.add('show');
+            } else {
+                // 非微信环境提示复制链接
+                if (navigator.share) {
+                    navigator.share({
+                        title: '体检真的危险吗？给爸妈的辟谣指南',
+                        text: '揭秘那些吓唬老人的健康谣言',
+                        url: window.location.href
+                    });
+                } else {
+                    alert('请复制链接发送给亲友，或在微信中打开后转发');
+                }
+            }
+        }
+        
+        // 页面可见性变化时暂停
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden && isPlaying) {
+                stopSpeech();
+            }
+        });
+    </script>
 </body>
 </html>
